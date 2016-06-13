@@ -1,5 +1,5 @@
 {
-  "name": "elasticsearch",
+  "name": "elasticsearch-sdk",
   "version": "0.0.1",
   "description": "for elasticsearch",
   "main": "index.js",
@@ -23,5 +23,10 @@
   "homepage": "https://github.com/daileimail/node-elasticsearch#readme",
   "dependencies": {
     "request": "^2.72.0"
-  }
+  },
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "devDependencies": {}
 }
