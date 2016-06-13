@@ -1,0 +1,27 @@
+{
+  "name": "elasticsearch",
+  "version": "0.0.1",
+  "description": "for elasticsearch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daileimail/node-elasticsearch.git"
+  },
+  "keywords": [
+    "node",
+    "elasticsearch",
+    "sdk"
+  ],
+  "author": "daileismart",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daileimail/node-elasticsearch/issues"
+  },
+  "homepage": "https://github.com/daileimail/node-elasticsearch#readme",
+  "dependencies": {
+    "request": "^2.72.0"
+  }
+}
