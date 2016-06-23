@@ -9,7 +9,7 @@ var elasticSearch = module.exports = function (opt) {
 }
 
 
-elasticSearch.prototype.addDoc = function (params, callback) {
+elasticSearch.prototype.addDoc = function (params) {
     var index = "";
     var type = "";
 
@@ -25,7 +25,7 @@ elasticSearch.prototype.addDoc = function (params, callback) {
         throw "this is no type";
     }
 
-    documentOptions.addDoc(this.url, index, type, params.key, params.data, callback);
+    return documentOptions.addDoc(this.url, index, type, params.key, params.data);
 }
 
 elasticSearch.prototype.updateDoc = function (params, callback) {
@@ -50,7 +50,7 @@ elasticSearch.prototype.updateDoc = function (params, callback) {
         throw "this is no key";
     }
 
-    documentOptions.addDoc(this.url, index, type, params.key, params.data, callback);
+    return documentOptions.addDoc(this.url, index, type, params.key, params.data);
 }
 
 elasticSearch.prototype.deleteDoc = function (params, callback) {
@@ -75,7 +75,7 @@ elasticSearch.prototype.deleteDoc = function (params, callback) {
         throw "this is no key";
     }
 
-    documentOptions.deleteDoc(this.url, index, type, key, callback);
+    return documentOptions.deleteDoc(this.url, index, type, key);
 }
 
 elasticSearch.prototype.search = function (params, callback) {
@@ -94,10 +94,10 @@ elasticSearch.prototype.search = function (params, callback) {
     }
 
     if (params.key) {
-        documentOptions.searchDocByKey(this.url, index, type, params.key, callback);
+        return documentOptions.searchDocByKey(this.url, index, type, params.key);
     }
     else {
-        documentOptions.searchDoc(this.url,index,type,params.qs,callback);
+        return documentOptions.searchDoc(this.url,index,type,params.qs);
     }
 
 

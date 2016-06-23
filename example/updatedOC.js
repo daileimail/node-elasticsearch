@@ -1,6 +1,6 @@
 'use strict';
 var elasticSearch = require("./../index");
-var opt = {url: "http://192.168.99.100:32776"};
+var opt = {url: "http://192.168.99.100:32769/"};
 var elastic = new elasticSearch(opt);
 var params = {
     index: "user",
@@ -9,6 +9,4 @@ var params = {
 
 params.key = 1;
 params.data = {username: "dailei1"};
-elastic.updateDoc(params, function (err) {
-    console.log(err);
-})
+elastic.updateDoc(params).then(data => console.log(data)).catch(err => console.log(err));

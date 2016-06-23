@@ -2,7 +2,7 @@
 
 const request = require("request");
 
-exports.addDoc = function (url, index, type, key, data, callback) {
+exports.addDoc = function (url, index, type, key, data) {
     var options = {
         method: 'POST',
         url: url + '/' + index + '/' + type + (key ? ("/" + key) : ''),
@@ -14,13 +14,18 @@ exports.addDoc = function (url, index, type, key, data, callback) {
         json: true
     };
 
-    request(options, function (error, response, body) {
-        callback(error);
-        console.log(body);
-    });
+    return new Promise(function (resolve,reject) {
+        request(options, function (error, response, body) {
+            if(error){
+                reject(error);
+            }else {
+                resolve(body);
+            }
+        });
+    })
 }
 
-exports.deleteDoc = function (url, index, type, key, callback) {
+exports.deleteDoc = function (url, index, type, key) {
     var options = {
         method: 'DELETE',
         url: url + '/' + index + '/' + type + (key ? ("/" + key) : ''),
@@ -31,13 +36,18 @@ exports.deleteDoc = function (url, index, type, key, callback) {
         json: true
     };
 
-    request(options, function (error, response, body) {
-        callback(error);
-        console.log(body);
-    });
+    return new Promise(function (resolve,reject) {
+        request(options, function (error, response, body) {
+            if(error){
+                reject(error);
+            }else {
+                resolve(body);
+            }
+        });
+    })
 }
 
-exports.searchDocByKey = function (url, index, type, key, callback) {
+exports.searchDocByKey = function (url, index, type, key) {
     var options = {
         method: 'GET',
         url: url + '/' + index + '/' + type + (key ? ("/" + key) : ''),
@@ -46,17 +56,18 @@ exports.searchDocByKey = function (url, index, type, key, callback) {
         }
     };
 
-    request(options, function (error, response, body) {
-        if (error) {
-            callback(error, null);
-        } else {
-            callback(null, body);
-        }
-
-    });
+    return new Promise(function (resolve,reject) {
+        request(options, function (error, response, body) {
+            if(error){
+                reject(error);
+            }else {
+                resolve(body);
+            }
+        });
+    })
 }
 
-exports.searchDoc = function (url, index, type, qs, callback) {
+exports.searchDoc = function (url, index, type, qs) {
     var options = {
         method: 'GET',
         url: url + '/' + index + '/' + type + "/_search",
@@ -66,12 +77,13 @@ exports.searchDoc = function (url, index, type, qs, callback) {
         }
     };
 
-    request(options, function (error, response, body) {
-        if (error) {
-            callback(error, null);
-        } else {
-            callback(null, body);
-        }
-
-    });
+    return new Promise(function (resolve,reject) {
+        request(options, function (error, response, body) {
+            if(error){
+                reject(error);
+            }else {
+                resolve(body);
+            }
+        });
+    })
 }
