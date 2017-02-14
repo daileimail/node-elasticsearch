@@ -1,6 +1,6 @@
 'use strict';
 var elasticSearch = require("./../index");
-var opt = {url: "http://192.168.99.100:32769"};
+var opt = {url: "http://localhost:32777"};
 var elastic = new elasticSearch(opt);
 var params = {
     index: "user",
