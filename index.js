@@ -1,5 +1,6 @@
 'use strict';
 var documentOptions = require('./option/docOptins')
+var modelOptions = require('./option/definModel')
 
 var elasticSearch = module.exports = function (opt) {
 
@@ -97,8 +98,17 @@ elasticSearch.prototype.search = function (params, callback) {
         return documentOptions.searchDocByKey(this.url, index, type, params.key);
     }
     else {
-        return documentOptions.searchDoc(this.url,index,type,params.qs);
+        return documentOptions.searchDoc(this.url, index, type, params.qs);
+    }
+}
+
+elasticSearch.prototype.defineModel = function (index, type, model) {
+    if(!index){
+        throw "there is no index"
+    }
+    if(!type){
+        throw "there is no type"
     }
 
-
+   return new modelOptions.defineModel(this.url,index,type,model)
 }

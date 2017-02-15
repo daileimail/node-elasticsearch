@@ -69,11 +69,12 @@ exports.searchDocByKey = function (url, index, type, key) {
 
 exports.searchDoc = function (url, index, type, qs) {
     var options = {
-        method: 'GET',
+        method: 'POST',
         url: url + '/' + index + '/' + type + "/_search",
-        qs: qs,
+        body: JSON.stringify(qs),
         headers: {
-            'cache-control': 'no-cache'
+            'cache-control': 'no-cache',
+            'content-type': 'application/json'
         }
     };
 
