@@ -1,6 +1,6 @@
 {
   "name": "elasticsearch-sdk",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "for elasticsearch",
   "main": "index.js",
   "scripts": {
